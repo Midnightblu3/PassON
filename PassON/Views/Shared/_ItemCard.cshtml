@@ -4,6 +4,10 @@
 	<div class=" card item-card">
 		<img src="@Model.ImageThumbnailUrl" class=" card-img-top" alt="@Model.Name">
 		<div class=" card-body item-button">
+			<a class=" btn btn-secondary"
+				asp-controller="ShoppingCart"
+				asp-action="AddToShoppingCart"
+				asp-route-pieId="@Model.Id">+ Add to cart</a>
 			<h4 class="d-grid">
 			</h4>
 
@@ -13,7 +17,7 @@
 					   asp-route-id="@Model.Id">@Model.Name</a>
 				</h2>
 				<h5 class=" text-nowrap">
-					@Model.Price.ToString()
+					@Model.Price.ToString("C")
 				</h5>
 			</div>
 		</div>

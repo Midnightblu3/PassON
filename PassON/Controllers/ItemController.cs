@@ -22,12 +22,21 @@ namespace PassON.Controllers
 
 
         /// <summary>
-        /// Go to Item/List view with ItemListViewModel
+        /// Go to Item/List view
         /// </summary>
-        /// <returns></returns>
-        public IActionResult List()
+        /// <param name="category">Category name for the list</param>
+        /// <returns> Item/List view with itemList View model</returns>
+        public IActionResult List(string category)
         {
-            ItemListViewModel itemListViewModel = new ItemListViewModel(_itemRepository.GetAll(), "All items");
+            ItemListViewModel itemListViewModel;
+            if (!string.IsNullOrEmpty(category))
+            {
+                itemListViewModel = new ItemListViewModel(_itemRepository.GetAll().Where(c=>c.Category.Name==category).OrderBy(c=>c.Id), category);
+            }
+            else
+            {
+                itemListViewModel = new ItemListViewModel(_itemRepository.GetAll(), "All items");
+            }
             return View(itemListViewModel);
         }
 
@@ -35,7 +44,7 @@ namespace PassON.Controllers
         /// Go to Item/Details View with item model
         /// </summary>
         /// <param name="id">Pass in the item Id</param>
-        /// <returns></returns>
+        /// <returns>Item/Detail view with item model</returns>
         public IActionResult Details(int id)
         {
             var item = _itemRepository.Get(id);
