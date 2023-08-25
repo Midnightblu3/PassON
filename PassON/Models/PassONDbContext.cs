@@ -15,7 +15,7 @@ namespace PassON.Models
 
         public DbSet<Item> Items { get; set; }
 
-
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
     }
 }

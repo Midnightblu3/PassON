@@ -17,8 +17,8 @@
              aria-label="Bethany's Pie Shop navigation header">
             <div class="container-xl">
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                    <img src="images/bethanys-pie-shop-logo_horiz-white.png" width="151" height="47" class="d-inline-block align-top mb-2 mt-1"
-                         alt="Bethany's Pie Shop Logo">
+                    <img src="images/PassOn-logo_horiz-white.png" width="151" height="47" class="d-inline-block align-top mb-2 mt-1"
+                         alt="PassOn Logo">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -28,11 +28,21 @@
 
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
+                        </li>
+                        <li class=" nav-item">
+                            <a asp-controller="Item" asp-action="List" class="nav-link">Items</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
+    <div>
+        @RenderBody()
+    </div>
 
 </body>
 </html>

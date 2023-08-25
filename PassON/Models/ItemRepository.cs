@@ -14,9 +14,9 @@ namespace PassON.Models
 
         public IEnumerable<Item> PromotedItem => throw new NotImplementedException();
 
-        public IEnumerable<Item> Get(int id)
+        public Item Get(int id)
         {
-            return _DbContext.Items.Where(x => x.Id == id);
+            return _DbContext.Items.SingleOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Item> GetAll()
