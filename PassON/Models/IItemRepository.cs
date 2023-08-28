@@ -3,9 +3,10 @@
     public interface IItemRepository
     {
         IEnumerable<Item> GetAll();
-        Item Get(int id);
+        Item? Get(int id);
 
         IEnumerable<Item> PromotedItem();
 
+        IEnumerable<Item> SearchItems(string searchQuery);
     }
 }

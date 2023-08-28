@@ -3,6 +3,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using PassON.Models;
+using System.Text.Json.Serialization;
 /**
 * Look at default appsetting file
 */
@@ -29,7 +30,9 @@ builder.Services.AddHttpContextAccessor();
 /**
  * Add services that make sure asp.net know about MVC
  */
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddJsonOptions(options => {
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
 
 /**
  * Register PassONDbcontext class as the Dbcontext for the application
