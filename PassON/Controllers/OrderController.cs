@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PassON.Models;
 
 namespace PassON.Controllers
 {
+    [Authorize]
     public class OrderController: Controller
     {
         private readonly IOrderRespository _orderRespository;

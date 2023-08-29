@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 
 namespace PassON.Models
 {
-    public class PassONDbContext:DbContext
+    public class PassONDbContext:IdentityDbContext
     {
         public PassONDbContext(DbContextOptions<PassONDbContext> options) : base(options)
         {

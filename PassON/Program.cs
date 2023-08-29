@@ -4,10 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using PassON.Models;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Identity;
 /**
 * Look at default appsetting file
 */
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("PassONDbContextConnection") ?? throw new InvalidOperationException("Connection string 'PassONDbContextConnection' not found.");
 
 /**
  * Add Dependency injection
@@ -34,6 +36,12 @@ builder.Services.AddControllersWithViews().AddJsonOptions(options => {
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     });
 
+
+/**
+ * Add razor pages services
+ */
+builder.Services.AddRazorPages();
+
 /**
  * Register PassONDbcontext class as the Dbcontext for the application
  */
@@ -45,6 +53,9 @@ builder.Services.AddDbContext<PassONDbContext>(options =>
         );
 });
 
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<PassONDbContext>();
+
 var app = builder.Build();
 
 /**
@@ -52,6 +63,11 @@ var app = builder.Build();
  */
 app.UseStaticFiles();
 
+/**
+ * Authentication middelware
+ */
+
+app.UseAuthentication();
 /**
  * if it is in Development environment using developer Exception page
  */
@@ -82,6 +98,11 @@ app.MapControllerRoute(
  */
 
 app.UseSession();
+
+/**
+ * Middelware that enable razor pages model
+ */
+app.MapRazorPages();
 
 /**
  * add initial data to database

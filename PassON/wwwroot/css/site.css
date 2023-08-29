@@ -3099,14 +3099,14 @@ textarea.form-control-lg {
 
 .btn-secondary {
     color: #000;
-    background-color: #FFD0C9;
-    border-color: #FFD0C9;
+    background-color: #ffcc80;
+    border-color: #ffcc80;
 }
 
     .btn-secondary:hover {
         color: #000;
-        background-color: #ffd7d1;
-        border-color: #ffd5ce;
+        background-color: #ffd699;
+        border-color: #ffd699;
     }
 
     .btn-check:focus + .btn-secondary, .btn-secondary:focus {
@@ -4158,12 +4158,18 @@ textarea.form-control-lg {
             border-color: transparent;
         }
 
-        .nav-tabs .nav-link.active,
-        .nav-tabs .nav-item.show .nav-link {
-            color: #495057;
-            background-color: #E5E5E5;
-            border-color: #dee2e6 #dee2e6 #E5E5E5;
-        }
+     .nav-tabs .nav-link.active,
+    .nav-tabs .nav-item.show .nav-link {
+        color: #1a1400;
+        background-color: #E5E5E5;
+        border-color: #dee2e6 #dee2e6 #E5E5E5;
+    }
+
+    .nav-item {
+        color: #1a1400;
+        background-color: #E5E5E5;
+        border-color: #dee2e6 #dee2e6 #E5E5E5;
+    }
 
     .nav-tabs .dropdown-menu {
         margin-top: -1px;
@@ -4745,7 +4751,7 @@ textarea.form-control-lg {
     }
 
 .navbar-dark .navbar-nav .nav-link {
-    color: rgba(229, 229, 229, 0.55);
+    color: rgba(10 10 10 / 55%);
 }
 
     .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {

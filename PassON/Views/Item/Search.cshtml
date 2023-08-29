@@ -10,6 +10,7 @@
 </table>
 
 <script type=" text/javascript">
+
 	$(document).ready(function(){
 		$("button").click(function(){
 			var searchQuery = $.trim($("#txtItemName").val());
@@ -24,19 +25,19 @@
 					$.each(items,function(i,item)){
 						$("tbody").append($("<tr>"));
 						appendElement = $("tbody tr").last();
-						appendElement.append($("<td>").html('<img src=' + pie.imageThumbnailUrl + '>'));
-						appendElement.append($("<td>").html('<a href="/pie/details/' + pie.pieId + '">' + pie.name + '</a>'));
-						appendElement.append($("<td>").html(pie.price));
+						appendElement.append($("<td>").html('<img src=' + item.imageThumbnailUrl + '>'));
+						appendElement.append($("<td>").html('<a href="/item/details/' + item.Id + '">' + item.name + '</a>'));
+						appendElement.append($("<td>").html(item.price));
 					});
 				},
 				error: function (xhr, status, error) {
 						console.log(xhr)
 
 					}
-			})
+			});
 
-		})
-	})	
+		});
+	});
 
 
 </script>
