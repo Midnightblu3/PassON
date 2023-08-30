@@ -43,6 +43,26 @@
                         <li class=" nav-item">
                             <a asp-controller="Contact" asp-action="Index" class="nav-link">Contact</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                                   data-toggle="dropdown"
+                                   href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   id="nav-dropdown"
+                                   aria-expanded="false">
+                                    My Account
+                            </a>
+                                <ul class="dropdown-menu" aria-labelledby="nav-dropdown">
+                                    <li>
+                                        <a asp-controller="MyAccount" asp-action="MyOrders" class="dropdown-item">My Orders</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="MyAccount" asp-action="Sell" class="dropdown-item">Sell</a>
+                                    </li>
+                                </ul>
+                            </li>
+
                     </ul>
 
                     <ul class="navbar-nav mb-2 mb-lg-0">
@@ -56,7 +76,7 @@
                     </ul>
 
 
-                    <vc:shopping-cart-summary> </vc:shopping-cart-summary>
+                    <vc:shopping-cart-summary></vc:shopping-cart-summary>
                     <partial name = "_LoginPartial" />
                 </div>
             </div>

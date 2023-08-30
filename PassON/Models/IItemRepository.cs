@@ -8,5 +8,7 @@
         IEnumerable<Item> PromotedItem();
 
         IEnumerable<Item> SearchItems(string searchQuery);
+
+        void CreateItem(SellModel sellModel);
     }
 }

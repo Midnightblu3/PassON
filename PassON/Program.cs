@@ -69,6 +69,10 @@ app.UseStaticFiles();
 
 app.UseAuthentication();
 /**
+ * Authorization middelware
+ */
+app.UseAuthorization();
+/**
  * if it is in Development environment using developer Exception page
  */
 if (app.Environment.IsDevelopment())
@@ -79,19 +83,19 @@ if (app.Environment.IsDevelopment())
 
 /**
  * Middleware that set up default routing for MVC
-
+*/
 
 app.MapDefaultControllerRoute();
 
- */
+ 
 
 /**
  * Middleware that set up routing pattern for MVC
  */
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 /**
  * Session middleware

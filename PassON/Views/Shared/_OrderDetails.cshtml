@@ -1,0 +1,29 @@
+﻿@model Order
+
+<ul class="dropdown-menu" aria-labelledby="nav-dropdown">
+	<li>
+		<h4>Order Id: @Model.Id</h4>
+	</li>
+	@foreach (OrderDetail od in Model.OrderDetails){
+		<li>
+			<div class=" row ">
+				<div class = "col-md-6">
+					<img scr =@od.Item.ImageThumbnailUrl alt=@od.Item.Name>
+				</div>
+				<div class="col-md-6">
+					<p>@od.Item.Name</p>
+				</div>
+				<div class="col-md-6">
+					<p>Quatity: @od.Amount</p>
+				</div>
+				<div class="col-md-6">
+					<p>sub-Total: @od.Price*@od.Amount</p>
+				</div>
+			</div>
+		</li>
+
+		<li>
+			<h4>Order total: @Model.OrderTotal</h4>
+		</li>
+	}
+</ul>

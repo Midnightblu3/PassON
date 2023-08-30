@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PassON.Models;
 
@@ -9,8 +10,8 @@ namespace PassON.Controllers
     {
         private readonly IOrderRespository _orderRespository;
         private readonly IShoppingCart _shoppingCart;
-
-        public OrderController(IOrderRespository orderRespository, IShoppingCart shoppingCart)
+       
+        public OrderController(IOrderRespository orderRespository, IShoppingCart shoppingCart , UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _orderRespository = orderRespository;
             _shoppingCart = shoppingCart;

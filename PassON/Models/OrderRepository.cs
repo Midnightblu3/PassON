@@ -34,5 +34,10 @@
 
 
         }
+
+        public IEnumerable<Order> GetAllOrders()
+        {
+           return _context.Orders;
+        }
     }
 }

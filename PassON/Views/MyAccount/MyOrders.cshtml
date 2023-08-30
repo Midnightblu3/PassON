@@ -1,0 +1,18 @@
+﻿@model MyOrderViewModel
+
+<div class="my-5">
+	<h3 class="mb-4">
+		My orders
+	</h3>
+</div>
+<div class=" my-5">
+	<ul>
+		@foreach(Order order in Model.myOrders){
+			<partial name="_OrderDetails" model="order" />
+
+		}
+
+	</ul>
+
+
+</div>

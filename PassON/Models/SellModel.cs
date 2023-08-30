@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System.ComponentModel;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
 
 namespace PassON.Models
 {
-    public class Item
+    public class SellModel
     {
         [BindNever]
         public int Id { get; set; }
@@ -20,7 +19,7 @@ namespace PassON.Models
         [StringLength(200)]
         public string? ShortDescription { get; set; }
 
-  
+
         [Display(Name = "Long Description: ")]
         public string? LongDescription { get; set; }
 
@@ -40,14 +39,10 @@ namespace PassON.Models
         public bool IsPromoted { get; set; }
 
 
-        [Required(ErrorMessage = "Please confirm if your item is instock")]
-        [Display(Name = "Is your item in stock right now? : ")]
-        public bool InStock { get; set; }
-
         [Required(ErrorMessage = "Please specify your item's category")]
         [Display(Name = "Item category Id")]
         public int CategoryId { get; set; }
-        [BindNever]
-        public Category Category { get; set; } = default!;
+
+
     }
 }
