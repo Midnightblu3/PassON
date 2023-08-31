@@ -15,14 +15,16 @@ namespace PassON.Controllers
         private readonly IOrderRespository _orderRespository;
         private readonly IItemRepository _itemRepository;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IOrderDetailRespository _orderDetailRespository;
 
-        public MyAccountController(IOrderRespository orderRespository, SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IItemRepository itemRepository, ICategoryRepository categoryRepository)
+        public MyAccountController(IOrderRespository orderRespository, SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IItemRepository itemRepository, ICategoryRepository categoryRepository, IOrderDetailRespository orderDetailRespository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _orderRespository = orderRespository;
             _itemRepository = itemRepository;
             _categoryRepository = categoryRepository;
+            _orderDetailRespository = orderDetailRespository;
         }
 
         public IActionResult MyOrders()
@@ -32,7 +34,18 @@ namespace PassON.Controllers
             if (!string.IsNullOrEmpty(UserName))
             {
                 myOrderViewModel = new MyOrderViewModel { myOrders =
-                        _orderRespository.GetAllOrders().Where(o => o.Email == UserName)};
+                    _orderRespository.GetAllOrders().Where(o => o.Email == UserName)};
+                foreach(var order in myOrderViewModel.myOrders)
+                {
+                    order.OrderDetails = _orderDetailRespository.GetOrderDetailsForOrder(order.Id).ToList();
+                    foreach (var od in order.OrderDetails)
+                    {
+                        od.Item = _itemRepository.Get(od.ItemId);
+                        od.Order = order;
+                    }
+                }
+
+                
             }
 
             return View(myOrderViewModel);

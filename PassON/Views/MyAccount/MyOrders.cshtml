@@ -6,13 +6,47 @@
 	</h3>
 </div>
 <div class=" my-5">
-	<ul>
-		@foreach(Order order in Model.myOrders){
-			<partial name="_OrderDetails" model="order" />
 
+
+	@if(Model.myOrders.Any()){
+		@foreach(var order in Model.myOrders){
+			<div class="card card-body shopping-cart-card">
+				<div class="row">
+						<div class="col-md-6">
+							<h4>Order Id: @order.Id</h4>
+						</div>
+						<div class="col-md-6 text-end">
+							<h4>Order total: $ @order.OrderTotal</h4>
+						</div>
+				</div>
+			@foreach (OrderDetail od in order.OrderDetails){
+				<ul>
+					<li>
+						<div class=" row ">
+							<div class="col-md-6">
+								<a asp-controller="Item" asp-action="Details" asp-route-id="@od.Item.Id">@od.Item.Name</a>
+							</div>
+								<div class="col-md-6 text-end">
+								<p>Quatity: @od.Amount</p>
+							</div>
+								<div class="col-md-6">
+								<img src =@od.Item.ImageThumbnailUrl style="width: 120px; height: 70" alt=@od.Item.Name>
+							</div>
+								<div class="col-md-6 text-end">
+								<p >sub-Total: @(od.Price*od.Amount)</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			}
+			</div>
 		}
+	}else{
 
-	</ul>
+		<li>Looks like you don't have any orders yet</li>
+	}
+	
+
 
 
 </div>

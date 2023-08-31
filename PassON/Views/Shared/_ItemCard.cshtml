@@ -2,12 +2,15 @@
 
 <div class=" col">
 	<div class=" card item-card">
-		<img src="@Model.ImageThumbnailUrl" class=" card-img-top" alt="@Model.Name">
+		<a class=" item-link" asp-controller="Item" asp-action="Details"
+		   asp-route-id="@Model.Id">
+			<img src="@Model.ImageThumbnailUrl" class=" card-img-top" alt="@Model.Name">
+		</a>
 		<div class=" card-body item-button">
 			<a class=" btn btn-secondary"
 				asp-controller="ShoppingCart"
 				asp-action="AddToShoppingCart"
-				asp-route-pieId="@Model.Id">+ Add to cart</a>
+				asp-route-itemid="@Model.Id">+ Add to cart</a>
 			<h4 class="d-grid">
 			</h4>
 

@@ -40,11 +40,12 @@
 				<span asp-validation-for="ImageThumbnailUrl" class="text-danger"></span>
 			</div>
 			<div class="col-12">
-				<label asp-for="IsPromoted" class="form-lable">Do you want to promote your item?</label>
+				<label asp-for="IsPromoted" class="form-lable">Do you want to promote your item?  </label>
 				<label asp-for="IsPromoted" class="form-lable">
-					<input type="radio" asp-for="IsPromoted" class="form-control" value="true" />Yes</label>
+					<input type="radio" asp-for="IsPromoted" class="form-check-input" value="true" />Yes
+				</label>
 				<label asp-for="IsPromoted" class="form-lable">
-					<input type="radio" asp-for="IsPromoted" class="form-control" value="false" />No
+					<input type="radio" asp-for="IsPromoted" class="form-check-input" value="false" />No
 				</label>
 				<span asp-validation-for="IsPromoted" class="text-danger"></span>
 			</div>

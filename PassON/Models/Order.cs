@@ -8,7 +8,7 @@ namespace PassON.Models
     {
         [BindNever]
         public int Id { get; set; }
-        public List<OrderDetail>? OrderDetails { get; set; }
+        public List<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
         [Required(ErrorMessage = "Please enter your first Name")]
         [Display(Name ="First Name")]

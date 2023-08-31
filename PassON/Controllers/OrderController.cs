@@ -34,6 +34,23 @@ namespace PassON.Controllers
 
             if (ModelState.IsValid)
             {
+                order.OrderPlace = DateTime.Now;
+
+                List<ShoppingCartItem> shoppingCartItems = _shoppingCart.ShoppingCartItems;
+                order.OrderDetails = new List<OrderDetail>();
+                foreach (ShoppingCartItem s in shoppingCartItems)
+                {
+                    order.OrderDetails.Add(new OrderDetail
+                    {
+                        ItemId = s.Item.Id,
+                        Amount = s.Amount,
+                        Price = s.Item.Price,
+                        OrderId=order.Id
+                    });
+
+                }
+                order.OrderTotal=_shoppingCart.GetTotalPrice();
+
                 _orderRespository.CreateOrder(order);
                 _shoppingCart.ClearCart();
                 return RedirectToAction("CheckoutComplete");

@@ -17,6 +17,7 @@ var connectionString = builder.Configuration.GetConnectionString("PassONDbContex
 builder.Services.AddScoped<ICategoryRepository, CategoryRespository>();
 builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<IShoppingCart, ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+builder.Services.AddScoped<IOrderDetailRespository, OrderDetailRespository>();
 builder.Services.AddScoped<IOrderRespository, OrderRepository>();
 
 /**

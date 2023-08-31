@@ -9,25 +9,26 @@
 	<tbody></tbody>
 </table>
 
-<script type=" text/javascript">
+<script type="text/javascript">
 
 	$(document).ready(function(){
 		$("button").click(function(){
 			var searchQuery = $.trim($("#txtItemName").val());
-			$("tbody").html("");
+			$("table tbody").html("");
 			$.ajax({
 				type:"POST",
-				url:"/api/Search",
-				data:"\""+searchQuery + "\"",
+				url: "/api/Search",
+				data: JSON.stringify(searchQuery),
 				contentType:"application/json; charset=utf-8",
 				dataType:"json",
 				success: function(items){
-					$.each(items,function(i,item)){
+					//var table = $("#tblItems");
+					//table.find("tr:not(:first)").remove();
+					$.each(items,function(i,item){
 						$("tbody").append($("<tr>"));
 						appendElement = $("tbody tr").last();
-						appendElement.append($("<td>").html('<img src=' + item.imageThumbnailUrl + '>'));
-						appendElement.append($("<td>").html('<a href="/item/details/' + item.Id + '">' + item.name + '</a>'));
-						appendElement.append($("<td>").html(item.price));
+						appendElement.append($("<td>").html('<img src=' + item.imageThumbnailUrl + ' style="width: 180px; height: 105"'+ '>'));
+						appendElement.append($("<td>").html('<a href="/item/details/' + item.id + '">' + "&nbsp" + item.name + '</a>'));
 					});
 				},
 				error: function (xhr, status, error) {

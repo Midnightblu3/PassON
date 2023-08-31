@@ -1,10 +1,11 @@
-﻿@model Order
+﻿@model MyOrderViewModel
 
 <ul class="dropdown-menu" aria-labelledby="nav-dropdown">
-	<li>
-		<h4>Order Id: @Model.Id</h4>
-	</li>
-	@foreach (OrderDetail od in Model.OrderDetails){
+	@foreach(var order in Model.myOrders){
+		<li>
+			<h4>Order Id: @order.Id</h4>
+		</li>
+		@foreach (OrderDetail od in @order.OrderDetails){
 		<li>
 			<div class=" row ">
 				<div class = "col-md-6">
@@ -21,9 +22,10 @@
 				</div>
 			</div>
 		</li>
-
+		}
 		<li>
-			<h4>Order total: @Model.OrderTotal</h4>
+			<h4>Order total: $@order.OrderTotal</h4>
 		</li>
 	}
+	
 </ul>
